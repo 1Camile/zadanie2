@@ -28,7 +28,9 @@ RUN npm run build
 FROM nginx:alpine
 
 # dodanie brakującego narzedzia do realizacji testu HEALTHCHECK 
-RUN apk add --update --no-cache curl && \
+RUN apk update && \
+    apk upgrade && \
+    apk add --update --no-cache curl && \
     rm -rf /etc/apk/cache
 
 # Imie i nazwisko autora
