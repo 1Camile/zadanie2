@@ -44,13 +44,11 @@ jobs:
           load: true
           cache-from: type=registry,ref=${{ env.CACHE_IMAGE }}
           cache-to: type=registry,ref=${{ env.CACHE_IMAGE }},mode=max
-          # outputs: type=docker,dest=/tmp/image.tar
           tags: user/zad2:test
 
       - name: Scan image with Trivy
         uses: aquasecurity/trivy-action@master
         with:
-          # input: /tmp/image.tar
           image-ref: user/zad2:test
           format: table
           exit-code: 1
