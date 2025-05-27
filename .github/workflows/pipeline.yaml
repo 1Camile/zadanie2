@@ -51,7 +51,7 @@ jobs:
         uses: aquasecurity/trivy-action@master
         with:
           # input: /tmp/image.tar
-          input: user/zad2:test
+          image-ref: user/zad2:test
           format: table
           exit-code: 1
           ignore-unfixed: true
