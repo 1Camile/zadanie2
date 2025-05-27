@@ -5,7 +5,7 @@ on:
     branches: [main]
 
 env:
-  IMAGE_NAME: ghcr.io/${{ github.repository }}
+  IMAGE_NAME: ghcr.io/${{ github.repository }}/zad2
   CACHE_IMAGE: docker.io/${{ vars.DOCKERHUB_USERNAME }}/zadanie2:cache
 
 jobs:
@@ -45,13 +45,13 @@ jobs:
           cache-from: type=registry,ref=${{ env.CACHE_IMAGE }}
           cache-to: type=registry,ref=${{ env.CACHE_IMAGE }},mode=max
           # outputs: type=docker,dest=/tmp/image.tar
-          tags: local-runner/image:test
+          tags: user/zad2:test
 
       - name: Scan image with Trivy
         uses: aquasecurity/trivy-action@master
         with:
           # input: /tmp/image.tar
-          input: local-runner/image:test
+          input: user/zad2:test
           format: table
           exit-code: 1
           ignore-unfixed: true
