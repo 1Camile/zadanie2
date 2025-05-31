@@ -24,7 +24,7 @@ jobs:
           images: ${{ env.IMAGE_NAME }}
           flavor: latest=false
           tags: |
-            type=schedule,enable=true,priority=100,prefix=zad2-,pattern={{date 'YYYYMMDD'}}
+            type=edge,priority=100,prefix=zad2-,branch=main
             type=semver,priority=200,pattern={{version}}   
 
       - name: QEMU set-up
