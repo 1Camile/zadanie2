@@ -5,7 +5,7 @@ on:
     branches: [main]
 
 env:
-  IMAGE_NAME: ghcr.io/${{ vars.GIT_HUB_USERNAME }}/zadanie2/zad2
+  IMAGE_NAME: ghcr.io/${{ vars.GIT_HUB_USERNAME }}/zadanie2/zad2:v2
   CACHE_IMAGE: docker.io/${{ vars.DOCKERHUB_USERNAME }}/zadanie2:cache
 
 jobs:
