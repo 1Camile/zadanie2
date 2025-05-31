@@ -5,7 +5,7 @@ on:
     branches: [main]
 
 env:
-  IMAGE_NAME: ghcr.io/1camile/zadanie2/zad2
+  IMAGE_NAME: ghcr.io/${{ vars.GIT_HUB_USERNAME }}/zadanie2/zad2
   CACHE_IMAGE: docker.io/${{ vars.DOCKERHUB_USERNAME }}/zadanie2:cache
 
 jobs:
@@ -50,7 +50,7 @@ jobs:
           tags: user/zad2:test
 
       - name: Scan image with Trivy
-        uses: aquasecurity/trivy-action@master
+        uses: aquasecurity/trivy-action@v2
         with:
           image-ref: user/zad2:test
           format: table
