@@ -50,7 +50,7 @@ jobs:
           tags: user/zad2:test
 
       - name: Scan image with Trivy
-        uses: aquasecurity/trivy-action@v0.2.0
+        uses: aquasecurity/trivy-action@master
         with:
           image-ref: user/zad2:test
           format: table
