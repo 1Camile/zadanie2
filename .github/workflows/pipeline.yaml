@@ -22,15 +22,15 @@ jobs:
       - name: Check out the source_repo
         uses: actions/checkout@v4
 
-      # - name: Docker metadata definitions
-      #   id: meta
-      #   uses: docker/metadata-action@v5
-      #   with:
-      #     images: ${{ env.IMAGE_NAME }}
-      #     flavor: latest=false
-      #     tags: |
-      #       type=sha,priority=100,prefix=zad2-,format=short
-      #       type=semver,priority=200,pattern={{version}}
+      - name: Docker metadata definitions
+        id: meta
+        uses: docker/metadata-action@v5
+        with:
+          images: ${{ env.IMAGE_NAME }}
+          flavor: latest=false
+          tags: |
+            type=sha,priority=100,prefix=zad2-,format=short
+            type=semver,priority=200,pattern={{version}}
 
       - name: QEMU set-up
         uses: docker/setup-qemu-action@v3
@@ -81,6 +81,6 @@ jobs:
           file: ./Dockerfile
           platforms: linux/amd64,linux/arm64
           push: true
-          tags: ${{ env.IMAGE_NAME }}:${{ github.sha }}
+          tags: ${{ steps.meta.outputs.tags }}
           cache-from: type=registry,ref=${{ env.CACHE_IMAGE }}
           cache-to: type=registry,ref=${{ env.CACHE_IMAGE }},mode=max
