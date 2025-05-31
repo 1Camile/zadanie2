@@ -1,8 +1,11 @@
 name: Build and Publish image
 
 on:
+  workflow_dispatch:
   push:
     branches: [main]
+    tags:
+    - 'v*'
 
 env:
   IMAGE_NAME: ghcr.io/${{ vars.GIT_HUB_USERNAME }}/zadanie2
